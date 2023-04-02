@@ -1,0 +1,42 @@
+@font-face {
+  src: url("../fonts/BespokeSlab-Regular.woff2") format("woff2");
+  src: url("../fonts/BespokeSlab-Regular.woff") format("woff");
+  font-family: "BespokeSlab";
+  font-weight: 400;
+}
+
+@font-face {
+  src: url("../fonts/BespokeSlab-Bold.woff2") format("woff2");
+  src: url("../fonts/BespokeSlab-Bold.woff") format("woff");
+  font-family: "BespokeSlab";
+  font-weight: 700;
+}
+
+@font-face {
+  src: url("../fonts/BespokeSlab-Light.woff2") format("woff2");
+  src: url("../fonts/BespokeSlab-Light.woff") format("woff");
+  font-family: "BespokeSlab";
+  font-weight: 300;
+}
+
+@font-face {
+  src: url("../fonts/BespokeSlab-Extrabold.woff2") format("woff2");
+  src: url("../fonts/BespokeSlab-Extrabold.woff") format("woff");
+  font-family: "BespokeSlab";
+  font-weight: 800;
+}
+
+@font-face {
+  src: url("../fonts/BespokeSlab-Medium.woff2") format("woff2");
+  src: url("../fonts/BespokeSlab-Medium.woff") format("woff");
+  font-family: "BespokeSlab";
+  font-weight: 500;
+}
+
+
+$main_police: "BespokeSlab";
+$extrabold: 800;
+$bold: 700;
+$medium: 500;
+$regular: 400;
+$light: 300;

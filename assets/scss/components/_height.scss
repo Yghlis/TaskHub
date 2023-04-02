@@ -1,0 +1,69 @@
+@for $i from 1 through 1 {
+  .h-#{$i}-2 {
+    height: percentage($i * 0.5);
+  }
+}
+
+
+
+@for $i from 1 through 2 {
+  // selector has to be .h-1/3, .h-2/3, .h-3/3
+
+
+  .h-#{$i}-3 {
+
+    height: percentage($i * 0.33);
+  }
+}
+
+@for $i from 1 through 3 {
+  .h-#{$i}-4 {
+    height: percentage($i * 0.25);
+  }
+}
+
+@for $i from 1 through 4 {
+  .h-#{$i}-5 {
+    height: percentage($i * 0.2);
+  }
+}
+
+@for $i from 1 through 9 {
+  .h-#{$i}-10 {
+    height: percentage($i * 0.10);
+  }
+
+
+}
+
+@for $i from 1 through 19 {
+  .h-#{$i}-20 {
+    height: percentage($i * 0.5);
+  }
+
+
+}
+
+.h-2 {
+  height: 2rem;
+}
+
+.h-10 {
+  height: 10rem;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.h-min {
+  height: min-content;
+}
+
+.max-h-screen {
+  max-height: 100vh;
+}

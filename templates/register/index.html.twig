@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegisterController!{% endblock %}
+
+{% block body %}
+
+<div class="rectangle bg-white w-9-10 h-9-10  mgt-10 flex relative ">
+    <div class="bg-blue flex flex-column w-5-10 text-connexion">
+        <h1 class="mgt-55">Bienvenue</h1>
+        <p>Veuillez vous inscrire pour poivoir profiter de ce magnigique gestionnaire de tache, si vous possèdez deja un commpte veuillez vous connecter !</p>
+        <a href="#" class="button-redirection mgt-5">Se connecter</a>
+
+</div>
+    <div class="bg-white flex flex-column w-5-10 form-connexion">
+        <h1 class="mgt-7">S'inscrire</h1>
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.firstname, null, {'label_attr': {'class': 'above-label'}}) }}
+            {{ form_widget(form.firstname) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.lastname, null, {'label_attr': {'class': 'above-label mgt-3'}}) }}
+            {{ form_widget(form.lastname) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.email, null, {'label_attr': {'class': 'above-label mgt-3'}}) }}
+            {{ form_widget(form.email) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.password.first, null, {'label_attr': {'class': 'above-label mgt-3'}}) }}
+            {{ form_widget(form.password.first) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.password.second, null, {'label_attr': {'class': 'above-label mgt-3'}}) }}
+            {{ form_widget(form.password.second) }}
+        </div>
+        {{ form_widget(form.submit, {'attr': {'class': 'button-validation mgt-5'}}) }}
+        {{ form_end(form) }}
+
+    </div>
+</div>
+
+
+{% endblock %}

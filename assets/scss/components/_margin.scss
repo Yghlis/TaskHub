@@ -1,0 +1,22 @@
+@for $i from 0 through 100 {
+  .mg-#{$i} {
+    margin: calc($i/4 * 1rem);
+  }
+
+  .mgt-#{$i} {
+    margin-top: calc($i/4 * 1rem);
+  ;
+  }
+
+  .mgb-#{$i} {
+    margin-bottom: calc($i/4 * 1rem);
+  }
+
+  .mgl-#{$i} {
+    margin-left: calc($i/4 * 1rem);
+  }
+
+  .mgr-#{$i} {
+    margin-right: calc($i/4 * 1rem);
+  }
+}
