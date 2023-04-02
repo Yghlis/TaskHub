@@ -6,11 +6,12 @@
     <table>
         <thead>
         <tr>
-
             <th>Nom</th>
             <th>Description</th>
             <th>Date</th>
             <th>Terminé</th>
+            <th>Modifier</th>
+            <th>Supprimer</th>
         </tr>
         </thead>
         <tbody id="task-list">
@@ -42,8 +43,9 @@
                             '<td>' + task.description + '</td>' +
                             '<td>' + task.date + '</td>' +
                             '<td>' + (task.completed ? 'Oui' : 'Non') + '</td>' +
+                            '<td><a href="">Modifier</a></td>' +
+                            '<td><a href="#" class="delete-task" data-task-id="' + task.id + '">Supprimer</a></td>' +
                             '</tr>';
-
                         $('#task-list').append(row);
                     });
                 }
@@ -54,14 +56,39 @@
                 e.preventDefault();
 
                 var formData = $(this).serialize();
-                console.log(formData);
                 $.ajax({
                     url: "{{ path('api_task_create') }}",
                     type: 'POST',
                     data: formData,
                     success: function(data) {
                         console.log('Tâche ajoutée !');
+                        // Ajouter la nouvelle tâche à la liste
+                        var row = '<tr>' +
+                            '<td>' + data.nom + '</td>' +
+                            '<td>' + data.description + '</td>' +
+                            '<td>' + data.date + '</td>' +
+                            '<td>' + (data.completed ? 'Oui' : 'Non') + '</td>' +
+                            '<td><a href="">Modifier</a></td>' +
+                            '<td><a href="#" class="delete-task" data-task-id="' + data.id + '">Supprimer</a></td>' +
+                            '</tr>';
+                        $('#task-list').append(row);
                     }
+                });
+            });
+
+            // Suppression d'une tâche
+            $('#task-list').on('click', '.delete-task', function(e) {
+                e.preventDefault();
+
+                var taskId = $(this).data('task-id');
+                $.ajax({
+                    url: "{{ path('api_task_delete', {'id': 'TASK_ID'}) }}".replace('TASK_ID', taskId),
+                    type: 'DELETE',
+                    success: function() {
+                        console.log('Tâche supprimée !');
+                        // Supprimer la tâche de la liste
+                        $(this).closest('tr').remove();
+                    }.bind(this)
                 });
             });
         });
