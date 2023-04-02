@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class TaskController extends AbstractController
 {
@@ -81,6 +82,7 @@ class TaskController extends AbstractController
         return new Response($json, 201, [
             'Content-Type' => 'application/json'
         ]);
+        return $this->redirectToRoute('app_home');
     }
 
     /**
@@ -125,13 +127,14 @@ class TaskController extends AbstractController
     }
 
     /**
-     * @Route("/api/tasks/{id}", name="api_task_delete", methods={"DELETE"})
+     * @Route("/api/task/{id}", name="api_task_delete", methods={"DELETE"})
      */
-    public function delete(Task $task, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Task $task, EntityManagerInterface $entityManager): JsonResponse
     {
+
         $entityManager->remove($task);
         $entityManager->flush();
 
-        return new Response(null, 204);
+        return new JsonResponse(null, Response::HTTP_NO_CONTENT);
     }
 }
