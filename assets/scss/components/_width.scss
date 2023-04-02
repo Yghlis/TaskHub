@@ -1,0 +1,61 @@
+@for $i from 1 through 9 {
+  .w-#{$i}-10 {
+    width: percentage($i * 0.10);
+  }
+}
+
+@for $i from 1 through 1 {
+  .w-#{$i}-2 {
+    width: percentage($i * 0.50);
+  }
+}
+
+@for $i from 1 through 2 {
+  .w-#{$i}-3 {
+    width: percentage($i * 0.33);
+  }
+}
+
+@for $i from 1 through 3 {
+  .w-#{$i}-4 {
+    width: percentage($i * 0.25);
+  }
+}
+
+@for $i from 1 through 4 {
+  .w-#{$i}-5 {
+    width: percentage($i * 0.20);
+  }
+}
+
+@for $i from 1 through 9 {
+  .w-#{$i}-015 {
+    width: percentage($i * 0.1535);
+  }
+}
+
+@for $i from 1 through 40 {
+  .w-#{$i}-02 {
+    width: percentage($i * 0.02);
+  }
+}
+
+@for $i from 1 through 19 {
+  .w-#{$i}-20 {
+    width: percentage($i * 0.05);
+  }
+
+
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.w-min {
+  width: min-content;
+}

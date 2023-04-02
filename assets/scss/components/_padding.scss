@@ -1,0 +1,22 @@
+@for $i from 0 through 100 {
+  .p-#{$i} {
+    padding: calc($i/4 * 1rem);
+  }
+
+  .pt-#{$i} {
+    padding-top: calc($i/4 * 1rem);
+  ;
+  }
+
+  .pb-#{$i} {
+    padding-bottom: calc($i/4 * 1rem);
+  }
+
+  .pl-#{$i} {
+    padding-left: calc($i/4 * 1rem);
+  }
+
+  .pr-#{$i} {
+    padding-right: calc($i/4 * 1rem);
+  }
+}
