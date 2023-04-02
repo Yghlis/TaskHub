@@ -23,7 +23,7 @@ class RegisterController extends AbstractController
     {
         $this->hasher = $hasher;
     }
-    #[Route('/register', name: 'app_register')]
+    #[Route('/', name: 'app_register')]
     public function index(Request $request, EntityManagerInterface $entityManager,UserPasswordHasherInterface $hasher  ): Response
     {
         $user = new User();
@@ -41,12 +41,12 @@ class RegisterController extends AbstractController
 
             $entityManager->persist($user);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Votre compte a bien été créé !');
             return $this->redirectToRoute('app_login');
 
         }
 
-        $this->addFlash('success', 'Votre compte a bien été créé !');
+
         return $this->render('register/index.html.twig', [
             'form' => $form->createView()
         ]);
