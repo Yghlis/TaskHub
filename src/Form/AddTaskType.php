@@ -32,7 +32,7 @@ class AddTaskType extends AbstractType
                 'format' => 'dd/MM/yyyy',
             ])
             ->add('submit', SubmitType::class,[
-                'label' => "S'inscrire"
+                'label' => "Ajouter"
             ])
         ;
     }

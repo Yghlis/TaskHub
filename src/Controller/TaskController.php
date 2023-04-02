@@ -110,12 +110,16 @@ class TaskController extends AbstractController
      */
     public function update(Task $task, Request $request, EntityManagerInterface $entityManager, SerializerInterface $serializer): Response
     {
-        $data = json_decode($request->getContent(), true);
+        $data = $request->request->all();
+        $nom = $data['nom'];
+        $description = $data['description'];
+        $completed = false;
 
-        $task->setNom($data['nom']);
-        $task->setDescription($data['description']);
+
+        $task->setNom($nom);
+        $task->setDescription($description);
         $task->setDate(new \DateTime($data['date']));
-        $task->setCompleted($data['completed']);
+        $task->setCompleted($completed);
 
         $entityManager->flush();
 
