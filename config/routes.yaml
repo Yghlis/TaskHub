@@ -1,3 +1,41 @@
 controllers:
     resource: ../src/Controller/
     type: attribute
+
+
+
+app_login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+    methods: [POST,GET]
+
+app_tasks_list:
+    path: /api/tasks
+    controller: App\Controller\TaskController::list
+    methods: GET
+
+app_tasks_create:
+    path: /api/tasks
+    controller: App\Controller\TaskController::create
+    methods: POST
+
+app_tasks_show:
+    path: /api/tasks/{id}
+    controller: App\Controller\TaskController::show
+    methods: GET
+    requirements:
+        id: '\d+'
+
+app_tasks_update:
+    path: /api/tasks/{id}
+    controller: App\Controller\TaskController::update
+    methods: PUT
+    requirements:
+        id: '\d+'
+
+app_tasks_delete:
+    path: /api/tasks/{id}
+    controller: App\Controller\TaskController::delete
+    methods: DELETE
+    requirements:
+        id: '\d+'
