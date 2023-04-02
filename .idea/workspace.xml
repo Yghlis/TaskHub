@@ -2,27 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bbfd583d-5ff2-4f97-8e90-a409764c8d2d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/scss/components/_border-radius.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/components/_colors.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/components/_flex.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/components/_height.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/components/_margin.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/components/_padding.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/components/_position.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/components/_width.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/elements/_buttons.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/elements/_card-register.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/elements/_flash-message.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/partials/_fonts.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/scss/partials/_globals.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/scss/elements/_header.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/scss/elements/_modal.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20230402101927.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20230402114351.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Controller/TaskController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Task.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/AddTaskType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/TaskRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/task/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/scss/partials/_globals.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scss/partials/_globals.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/styles/app.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/styles/app.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/LoginFormAuthenticator.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/home/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/home/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
