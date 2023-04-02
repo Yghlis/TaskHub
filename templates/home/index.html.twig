@@ -18,11 +18,24 @@
         </tbody>
     </table>
 
-    <form id="add-task-form">
-        {{ form_start(form) }}
-        {{ form_widget(form) }}
 
-        <button type="submit">Ajouter</button>
+    <form id="add-task-form" class="form">
+
+        <br>
+        <h2>Ajouter une nouvelle tache</h2>
+        <br>
+        {{ form_start(form) }}
+
+        {{ form_widget(form.nom, {'attr': {'style': 'width: 600px;'}}) }}
+        <br>
+        {{ form_widget(form.description, {'attr': {'style': 'width: 600px;'}}) }}
+        <br>
+        {{ form_widget(form.date, {'attr': {'style': 'width: 600px;'}}) }}
+
+        {{ form_end(form) }}
+
+
+
     </form>
 
 {% endblock %}
@@ -43,7 +56,7 @@
                             '<td>' + task.description + '</td>' +
                             '<td>' + task.date + '</td>' +
                             '<td>' + (task.completed ? 'Oui' : 'Non') + '</td>' +
-                            '<td><a href="">Modifier</a></td>' +
+                            '<td><a href="#" class="update-task" data-task-id="' + task.id + '">Modifier</a></td>' +
                             '<td><a href="#" class="delete-task" data-task-id="' + task.id + '">Supprimer</a></td>' +
                             '</tr>';
                         $('#task-list').append(row);
@@ -90,6 +103,66 @@
                         $(this).closest('tr').remove();
                     }.bind(this)
                 });
+            });
+
+            // Modification d'une tâche
+            $('#task-list').on('submit', '.update-task-form', function(e) {
+                e.preventDefault();
+
+                var taskId = $(this).data('task-id');
+                var formData = $(this).serialize();
+                $.ajax({
+                    url: "{{ path('api_task_update', {'id': 'TASK_ID'}) }}".replace('TASK_ID', taskId),
+                    type: 'PUT',
+                    data: formData,
+                    success: function(data) {
+                        console.log('Tâche modifiée !');
+                        // Mettre à jour la tâche dans la liste
+                        var row = '<tr>' +
+                            '<td>' + data.nom + '</td>' +
+                            '<td>' + data.description + '</td>' +
+                            '<td>' + data.date + '</td>' +
+                            '<td>' + (data.completed ? 'Oui' : 'Non') + '</td>' +
+                            '<td><a href="#" class="update-task" data-task-id="' + data.id + '">Modifier</a></td>' +
+                            '<td><a href="#" class="delete-task" data-task-id="' + data.id + '">Supprimer</a></td>' +
+                            '</tr>';
+                        $('#task-list tr[data-task-id="' + taskId + '"]').replaceWith(row);
+                    }
+                });
+            });
+
+// Formulaire de modification d'une tâche
+            $('#task-list').on('click', '.update-task', function(e) {
+                e.preventDefault();
+
+                var taskId = $(this).data('task-id');
+                var taskRow = $(this).closest('tr');
+                var taskName = taskRow.find('td:nth-child(1)').text();
+                var taskDescription = taskRow.find('td:nth-child(2)').text();
+                var taskDate = taskRow.find('td:nth-child(3)').text();
+                var taskCompleted = (taskRow.find('td:nth-child(4)').text() == 'Oui');
+
+                var form = '<form class="update-task-form" data-task-id="' + taskId + '">' +
+                    '<label>nom :</label><br>' +
+                    '<input type="text" name="nom" value="' + taskName + '"><br>' +
+                    '<label>Description :</label><br>' +
+                    '<textarea name="description">' + taskDescription + '</textarea><br>' +
+                    '<label>Date :</label><br>' +
+                    '<input type="date" name="date" value="' + taskDate + '"><br>' +
+                    '<label>Terminé :</label><br>' +
+                    '<input type="checkbox" name="completed" ' + (taskCompleted ? 'checked' : '') + '><br>' +
+                    '<input type="submit" value="Modifier">' +
+                    '</form>';
+
+                taskRow.replaceWith('<tr>' +
+                    '<td colspan="6">' + form + '</td>' +
+                    '</tr>');
+
+                const forma = document.querySelector('form'); // sélectionne le formulaire
+                forma.addEventListener('submit', function() {
+                    location.reload(); // rafraîchit la page
+                });
+
             });
         });
     </script>
