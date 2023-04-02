@@ -24,7 +24,7 @@ class HomeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
 
-            return $this->redirectToRoute('app_task_create');
+            return $this->redirectToRoute('api_task_create');
         }
          return $this->render('home/index.html.twig', [
               'form' => $form->createView()
