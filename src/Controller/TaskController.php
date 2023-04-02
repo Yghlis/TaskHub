@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Task;
+use DateTime;
+use App\Form\AddTaskType;
 use App\Repository\TaskRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,6 +20,7 @@ class TaskController extends AbstractController
      */
     public function list(TaskRepository $taskRepository, SerializerInterface $serializer): Response
     {
+
         $tasks = $taskRepository->findAll();
 
         $data = [];
@@ -33,7 +36,6 @@ class TaskController extends AbstractController
         }
 
         $json = $serializer->serialize($data, 'json');
-
         return new Response($json, 200, [
             'Content-Type' => 'application/json'
         ]);
@@ -44,19 +46,38 @@ class TaskController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $entityManager, SerializerInterface $serializer): Response
     {
-        $data = json_decode($request->getContent(), true);
+
+
+
+        $data = $request->request->all();
+        $nom = $data['add_task']['nom'];
+        $description = $data['add_task']['description'];
+
+        $completed = false;
+
+        $date = sprintf(
+            '%d-%d-%d',
+            $data['add_task']['date']['year'],
+            $data['add_task']['date']['month'],
+            $data['add_task']['date']['day']
+        );
+
+
+
+
+
 
         $task = new Task();
-        $task->setNom($data['nom']);
-        $task->setDescription($data['description']);
-        $task->setDate(new \DateTime($data['date']));
-        $task->setCompleted($data['completed']);
+        $task->setNom($nom);
+        $task->setDescription($description);
+        $task->setDate(new DateTime($date));$task->setDate(DateTime::createFromFormat('Y-m-d', $date));
+        $task->setCompleted($completed);
 
         $entityManager->persist($task);
         $entityManager->flush();
 
-        $json = $serializer->serialize($task, 'json');
 
+        $json = $serializer->serialize($task, 'json');
         return new Response($json, 201, [
             'Content-Type' => 'application/json'
         ]);
@@ -67,6 +88,7 @@ class TaskController extends AbstractController
      */
     public function show(Task $task, SerializerInterface $serializer): Response
     {
+
         $data = [
             'id' => $task->getId(),
             'nom' => $task->getNom(),

@@ -1,64 +1,69 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
-
 {% block body %}
-    <h1>Mon compte</h1>
-    Bienvenue {{ app.user.firstname }} !
-    <br>
+    <h1>Liste des tâches</h1>
 
-    <button id="open-modal">Ajouter une tache</button>
-    <div id="modal" class="modal mgt-5 w-7-10 h-8-10">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Titre de la modale</h2>
-            <p>Contenu de la modale </p>
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-        </div>
-    </div>
-    {% block javascripts %}
-        <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var modal = document.getElementById("modal");
-                modal.style.display = "none";
-                var btn = document.getElementById("open-modal");
-                var span = document.getElementsByClassName("close")[0];
+    <table>
+        <thead>
+        <tr>
 
-                // Fonction pour ouvrir la modale
-                function openModal() {
-                    modal.style.display = "block";
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Terminé</th>
+        </tr>
+        </thead>
+        <tbody id="task-list">
+        </tbody>
+    </table>
 
+    <form id="add-task-form">
+        {{ form_start(form) }}
+        {{ form_widget(form) }}
 
-                }
+        <button type="submit">Ajouter</button>
+    </form>
 
-                // Fonction pour fermer la modale
-                function closeModal() {
-                    modal.style.display = "none";
-                    document.body.style.backgroundColor = "initial";
-                }
+{% endblock %}
 
-                // Ajoute l'événement pour ouvrir la modale
-                btn.onclick = function() {
-                    openModal();
-                }
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Récupération de la liste des tâches
+            $.ajax({
+                url: "{{ path('api_task_list') }}",
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    $.each(data, function(key, task) {
+                        var row = '<tr>' +
+                            '<td>' + task.nom + '</td>' +
+                            '<td>' + task.description + '</td>' +
+                            '<td>' + task.date + '</td>' +
+                            '<td>' + (task.completed ? 'Oui' : 'Non') + '</td>' +
+                            '</tr>';
 
-                // Ajoute l'événement pour fermer la modale
-                span.onclick = function() {
-                    closeModal();
-                }
-
-                // Ferme la modale si l'utilisateur clique en dehors du contenu
-                window.onclick = function(event) {
-                    if (event.target == modal) {
-                        closeModal();
-                    }
+                        $('#task-list').append(row);
+                    });
                 }
             });
 
+            // Ajout d'une tâche
+            $('#add-task-form').on('submit', function(e) {
+                e.preventDefault();
 
-
-        </script>
-    {% endblock %}
+                var formData = $(this).serialize();
+                console.log(formData);
+                $.ajax({
+                    url: "{{ path('api_task_create') }}",
+                    type: 'POST',
+                    data: formData,
+                    success: function(data) {
+                        console.log('Tâche ajoutée !');
+                    }
+                });
+            });
+        });
+    </script>
 {% endblock %}
-
